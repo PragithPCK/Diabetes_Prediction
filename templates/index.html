@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+</head>
+<body>
+    <h2>Diabetes Prediction Form</h2>
+    <form method="POST" action="/predict">
+        {% for feature in ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness',
+                           'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age', 'Outcome'] %}
+            <label>{{ feature }}:</label>
+            <input type="text" name="{{ feature }}" required><br><br>
+        {% endfor %}
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>

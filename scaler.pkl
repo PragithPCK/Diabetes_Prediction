@@ -1,0 +1,19 @@
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+import joblib
+
+# Load your dataset
+df = pd.read_csv('diabetes.csv')  # replace with your dataset
+
+# Separate input features (exclude 'Outcome' or any target column)
+X = df.drop(columns='Outcome')
+
+# Fit the scaler
+scaler = StandardScaler()
+scaler.fit(X)
+
+# Save the scaler
+joblib.dump(scaler, 'scaler.pkl')
+
+print("Scaler saved as scaler.pkl")
+
